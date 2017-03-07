@@ -38,3 +38,15 @@ body > section > form > input:nth-child(3) {
 .centered {
 	text-align: center;
 }
+
+.notification {
+	border-radius: 50%;
+	width: 45px;
+	height: 45px;
+	background-color: black;
+	color: white;
+	position: absolute;
+	margin-left: 27%;
+	margin-top: 20px;
+	font-size: 25px;
+}
