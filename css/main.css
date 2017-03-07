@@ -2,3 +2,39 @@ html {
 	font-family: 'Raleway', sans-serif;
 }
 
+body > section > form > input.black.u-full-width {
+	background-color: black;
+	border-color: black;
+	color: white;
+}
+
+body > section > form > div:nth-child(1) > div > input {
+	margin: 25px auto 25px auto;
+	border-radius: 50%;
+	width: 150px;
+	height: 150px;
+	background-color: lightgrey;
+	text-align: center;
+	color: grey;
+	font-size: 25px;
+}
+
+body > section > form > div:nth-child(2) > div > input {
+	margin: 25px auto 25px auto;
+	border-radius: 50%;
+	width: 150px;
+	height: 150px;
+	background-color: lightgrey;
+	text-align: center;
+	color: grey;
+	font-size: 25px;
+}
+
+body > section > form > input:nth-child(3) {
+	text-align: right;
+}
+
+
+.centered {
+	text-align: center;
+}
