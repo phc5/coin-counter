@@ -17,26 +17,26 @@
 			<div class="row centered">
 				<div class="one-half column">
 					<div class="notification"></div>
-					<input type="text" class="circle"></input>	
+					<input name="coin1" pattern="[0-9]{1,3}" type="text" class="circle" autocomplete="off" required></input>	
 				</div>
 
 				<div class="one-half column">
 					<div class="notification"></div>
-					<input type="text" class="circle"></input>	
+					<input name="coin2" pattern="[0-9]{1,3}" type="text" class="circle" autocomplete="off" required></input>	
 				</div>
 			</div>
 			<div class="row centered">
 				<div class="one-half column">
 					<div class="notification"></div>
-					<input type="text" class="circle"></input>	
+					<input name="coin3" pattern="[0-9]{1,3}" type="text" class="circle" autocomplete="off" required></input>	
 				</div>
 
 				<div class="one-half column">
 					<div class="notification"></div>
-					<input type="text" class="circle"></input>	
+					<input name="coin4" pattern="[0-9]{1,3}" type="text" class="circle" autocomplete="off" required></input>	
 				</div>
 			</div>
-			<input class="u-full-width" type="text" />
+			<input class="u-full-width" type="text" autocomplete="off" required/>
 			<input class="black u-full-width" type="submit" value="Calculate" />
 		</form>
 	</section>
@@ -46,10 +46,17 @@
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
 <script>
+	function calculateCoins(coin1, coin2, coin3, coin4) {
+		const array = [coin1,coin2, coin3, coin4];
+		array.sort(function(a, b){ return b-a });
+		console.log(array);
+	}
+
 	$(document).ready(function() {
 		$("#calculateForm").submit(function(event) {
 			event.preventDefault();
-			
+			const coinTarget = event.target;
+			calculateCoins(coinTarget.coin1.value, coinTarget.coin2.value, coinTarget.coin3.value, coinTarget.coin4.value);
 		});
 	});
 </script>
