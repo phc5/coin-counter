@@ -1,5 +1,5 @@
 html {
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
 body > section > form > input.black.u-full-width {
@@ -34,7 +34,7 @@ body > section > form > input:nth-child(3) {
 	text-align: right;
 }
 
-h1 {
+h2 {
 	text-transform: uppercase;
 }
 
