@@ -38,6 +38,9 @@ h1 {
 	text-transform: uppercase;
 }
 
+#calculateForm > input{
+	width: 425px;
+}
 
 .centered {
 	text-align: center;
