@@ -63,9 +63,9 @@ h1 {
 
 @media (max-width: 550px) {
 	.counter-container {
-		width: 300px;
+		width: 100%
 	}
-	.notification {
-		margin-left: 55%;
+	#calculateForm > div > div {
+		width: 50%;
 	}
 }
