@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8" />
-	<meta name="description" content="A coin counter" />
+	<meta name="description" content="A coin counter that calculate the smallest amount of coins needed to reach the total." />
 	<meta name="author" content="Paul Chong" />
 	<title>Coin Counter</title>
 
@@ -46,6 +46,17 @@
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
 <script>
+ 	/**
+ 	 * calculateCoins() will take in four coins and the total needed and calculate the
+ 	 * the smallest amount of coins needed to reach the total.
+ 	 *
+ 	 * @param {Number} coin1 - the first coin
+ 	 * @param {Number} coin2 - the second coin
+ 	 * @param {Number} coin3 - the third coin
+ 	 * @param {Number} coin4 - the fourth coin
+ 	 * @param {Number} total - the total needed
+ 	 * @return {Array} coins - the array of the coins with their quantities
+ 	 */
 	function calculateCoins(coin1, coin2, coin3, coin4, total) {
 		const coins = [coin1, coin2, coin3, coin4];
 		coins.sort(function(a, b){ return b-a });
@@ -57,9 +68,22 @@
 				coins[i] = { coin: coins[i], quantity: quantity }
 			}
 		}
+		// Alert user if exact change cannot be given
+		if (total > 0) {
+			alert('Error: Exact change cannot be given with specified coins! \nTotal left: ' + total);
+		}
 		return coins;
 	}
 
+	/**
+ 	 * Entry point for our script.
+ 	 *
+ 	 * There is an event listener for the form. Once the user submits the form, this listener will invoke 
+ 	 * calculateCoins() and pass in coin1, coin2, coin3, coin4, and total and set the returned value to 
+ 	 * a variable called result. Then it will loop through result (which is an array) and match each coin to its 
+ 	 * notification bubble. If a match is found, it will set the HTML with the quantity and make the notificiation
+ 	 * bubble visible.
+ 	 */
 	$(document).ready(function() {
 		$("#calculateForm").submit(function(event) {
 			event.preventDefault();
