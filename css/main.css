@@ -11,8 +11,8 @@ body > section > form > input.black.u-full-width {
 body > section > form > div:nth-child(1) > div > input {
 	margin: 25px auto 25px auto;
 	border-radius: 50%;
-	width: 150px;
-	height: 150px;
+	width: 125px;
+	height: 125px;
 	background-color: lightgrey;
 	text-align: center;
 	color: grey;
@@ -22,8 +22,8 @@ body > section > form > div:nth-child(1) > div > input {
 body > section > form > div:nth-child(2) > div > input {
 	margin: 25px auto 25px auto;
 	border-radius: 50%;
-	width: 150px;
-	height: 150px;
+	width: 125px;
+	height: 125px;
 	background-color: lightgrey;
 	text-align: center;
 	color: grey;
@@ -38,10 +38,12 @@ h1 {
 	text-transform: uppercase;
 }
 
-#calculateForm > input{
-	width: 425px;
+.counter-container {
+	width: 500px;
+	margin: 0 auto;
+	position: relative;
+	box-sizing: border-box;
 }
-
 .centered {
 	text-align: center;
 }
@@ -59,8 +61,11 @@ h1 {
 	visibility: hidden;
 }
 
-@media (min-width: 1150px) {
-	body > section.container {
-		width: 40%;
+@media (max-width: 550px) {
+	.counter-container {
+		width: 300px;
+	}
+	.notification {
+		margin-left: 55%;
 	}
 }
