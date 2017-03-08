@@ -11,6 +11,14 @@ For example, if the total is 18 cents and there are 25, 10, 5, and 1 coins. Then
 2. Change directory into the project directory: `cd coin-counter`, or if you named the project something else `cd [project-name]`
 3. Open the index.html file in your browser.
 
+# Requirements & Test Cases
+
+1. Each coin circle should be editable.
+2. Calculate function should be written in JavaScript
+
+- [x] Coins are in descending order
+- [x] Coins can be in any order
+- [x] Assuming a 1 coin will always exist, the other three coin values can be random.
 
 # Contributing / Comments
 
