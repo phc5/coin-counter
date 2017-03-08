@@ -55,3 +55,9 @@ h1 {
 	font-size: 25px;
 	visibility: hidden;
 }
+
+@media (min-width: 1150px) {
+	body > section.container {
+		width: 40%;
+	}
+}
