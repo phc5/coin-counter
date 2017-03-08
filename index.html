@@ -68,9 +68,9 @@
 				coins[i] = { coin: coins[i], quantity: quantity }
 			}
 		}
-		// Alert user if exact change cannot be given
+		// if exact change cannot be given with specified coins return nothing.
 		if (total > 0) {
-			alert('Error: Exact change cannot be given with specified coins! \nTotal left: ' + total);
+			return;
 		}
 		return coins;
 	}
@@ -90,24 +90,30 @@
 			const coinTarget = event.target;
 			let result = calculateCoins(coinTarget.coin1.value, coinTarget.coin2.value, coinTarget.coin3.value, coinTarget.coin4.value, coinTarget.total.value);
 			
-			for (let i = 0; i < result.length; i++) {
-				switch (result[i].coin) {
-					case coinTarget.coin1.value:
-						$("#notification1").html(result[i].quantity);
-						$("#notification1").css("visibility", "visible");
-						break;
-					case coinTarget.coin2.value:
-						$("#notification2").html(result[i].quantity);
-						$("#notification2").css("visibility", "visible");
-						break;
-					case coinTarget.coin3.value:
-						$("#notification3").html(result[i].quantity);
-						$("#notification3").css("visibility", "visible");
-						break;
-					case coinTarget.coin4.value:
-						$("#notification4").html(result[i].quantity);
-						$("#notification4").css("visibility", "visible");
-						break;
+			// If result is undefined then alert, else proceed and display results
+			if (result === undefined) {
+				alert('Error: Exact change cannot be given with specified coins!');
+				// throw new Error('Exact change cannot be given with specified coins!');
+			} else {
+				for (let i = 0; i < result.length; i++) {
+					switch (result[i].coin) {
+						case coinTarget.coin1.value:
+							$("#notification1").html(result[i].quantity);
+							$("#notification1").css("visibility", "visible");
+							break;
+						case coinTarget.coin2.value:
+							$("#notification2").html(result[i].quantity);
+							$("#notification2").css("visibility", "visible");
+							break;
+						case coinTarget.coin3.value:
+							$("#notification3").html(result[i].quantity);
+							$("#notification3").css("visibility", "visible");
+							break;
+						case coinTarget.coin4.value:
+							$("#notification4").html(result[i].quantity);
+							$("#notification4").css("visibility", "visible");
+							break;
+					}
 				}
 			}
 		});
