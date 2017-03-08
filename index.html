@@ -16,27 +16,27 @@
 		<form id="calculateForm">
 			<div class="row centered">
 				<div class="one-half column">
-					<div class="notification"></div>
+					<div id="notification1" class="notification"></div>
 					<input name="coin1" pattern="[0-9]{1,3}" type="text" class="circle" autocomplete="off" required></input>	
 				</div>
 
 				<div class="one-half column">
-					<div class="notification"></div>
+					<div id="notification2" class="notification"></div>
 					<input name="coin2" pattern="[0-9]{1,3}" type="text" class="circle" autocomplete="off" required></input>	
 				</div>
 			</div>
 			<div class="row centered">
 				<div class="one-half column">
-					<div class="notification"></div>
+					<div id="notification3" class="notification"></div>
 					<input name="coin3" pattern="[0-9]{1,3}" type="text" class="circle" autocomplete="off" required></input>	
 				</div>
 
 				<div class="one-half column">
-					<div class="notification"></div>
+					<div id="notification4" class="notification"></div>
 					<input name="coin4" pattern="[0-9]{1,3}" type="text" class="circle" autocomplete="off" required></input>	
 				</div>
 			</div>
-			<input class="u-full-width" type="text" autocomplete="off" required/>
+			<input name="total" class="u-full-width" type="text" autocomplete="off" required/>
 			<input class="black u-full-width" type="submit" value="Calculate" />
 		</form>
 	</section>
@@ -46,17 +46,46 @@
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
 <script>
-	function calculateCoins(coin1, coin2, coin3, coin4) {
-		const array = [coin1,coin2, coin3, coin4];
-		array.sort(function(a, b){ return b-a });
-		console.log(array);
+	function calculateCoins(coin1, coin2, coin3, coin4, total) {
+		const coins = [coin1, coin2, coin3, coin4];
+		coins.sort(function(a, b){ return b-a });
+		
+		for (let i = 0; i < coins.length && total > 0; i++) {
+			let quantity = Math.floor(total / coins[i]);
+			if (quantity > 0) {
+				total -= quantity * coins[i];
+				coins[i] = { coin: coins[i], quantity: quantity }
+			}
+		}
+		return coins;
 	}
 
 	$(document).ready(function() {
 		$("#calculateForm").submit(function(event) {
 			event.preventDefault();
 			const coinTarget = event.target;
-			calculateCoins(coinTarget.coin1.value, coinTarget.coin2.value, coinTarget.coin3.value, coinTarget.coin4.value);
+			let result = calculateCoins(coinTarget.coin1.value, coinTarget.coin2.value, coinTarget.coin3.value, coinTarget.coin4.value, coinTarget.total.value);
+			
+			for (let i = 0; i < result.length; i++) {
+				switch (result[i].coin) {
+					case coinTarget.coin1.value:
+						$("#notification1").html(result[i].quantity);
+						$("#notification1").css("visibility", "visible");
+						break;
+					case coinTarget.coin2.value:
+						$("#notification2").html(result[i].quantity);
+						$("#notification2").css("visibility", "visible");
+						break;
+					case coinTarget.coin3.value:
+						$("#notification3").html(result[i].quantity);
+						$("#notification3").css("visibility", "visible");
+						break;
+					case coinTarget.coin4.value:
+						$("#notification4").html(result[i].quantity);
+						$("#notification4").css("visibility", "visible");
+						break;
+				}
+			}
 		});
 	});
 </script>
